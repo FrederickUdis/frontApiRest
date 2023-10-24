@@ -72,12 +72,12 @@ Vistas Ordenes
 
 ![image](https://github.com/FrederickUdis/frontApiRest/assets/30853509/a0c8b4fa-47cb-4f33-84f1-33ea98748372)
 
-##Nota
+## Nota
 las rutas de las vistas son la siguientes 
 
 ![image](https://github.com/FrederickUdis/frontApiRest/assets/30853509/af2058bb-23d9-4ab9-91f1-63ffaaa19a47)
 
-##Importante 
+## Importante 
 Si se presenta algun problema con el nombre del proyecto lo deben cambiar a tienda
 
 
