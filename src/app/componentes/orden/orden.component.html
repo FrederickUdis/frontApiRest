@@ -1,0 +1,67 @@
+<div class="container mt-5">
+
+  <!-- Botón centrado para crear una nueva orden -->
+  <div class="text-center mb-4">
+      <button class="btn btn-success" (click)="agregarOrden()">Crear Orden</button>
+  </div>
+
+  <!-- Formulario para agregar una orden -->
+  <div *ngIf="mostrarFormulario" class="mb-4">
+      <form [formGroup]="ordenForm" (ngSubmit)="crearOrden()">
+          <div class="form-group">
+              <label for="consumidor">Consumidor</label>
+              <select class="form-control" id="consumidor" formControlName="ConsumidorID">
+                  <option *ngFor="let consumidor of consumidores" [value]="consumidor.ID">{{ consumidor.Nombre }}</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="producto">Producto</label>
+              <select class="form-control" id="producto" formControlName="ProductoID">
+                  <option *ngFor="let producto of productos" [value]="producto.ID">{{ producto.Descripcion }}</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="cantidad">Cantidad</label>
+              <input type="number" class="form-control" id="cantidad" formControlName="Cantidad">
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+      <hr>
+  </div>
+
+  <!-- Lista de órdenes en formato de tarjetas -->
+  <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let orden of ordenes">
+          <div class="card h-100 border-primary">
+              <div class="card-header bg-primary text-white">
+                  Orden ID: {{ orden.ID }}
+              </div>
+              <div class="card-body">
+                  <table class="table table-bordered table-striped">
+                      <tbody>
+                          <tr>
+                              <td><strong>Consumidor</strong></td>
+                              <td>{{ orden.Consumidor.Nombre }}</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Producto</strong></td>
+                              <td>{{ orden.Producto.Descripcion }}</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Cantidad</strong></td>
+                              <td>{{ orden.Cantidad }}</td>
+                          </tr>
+                          <tr>
+                              <td><strong>Total</strong></td>
+                              <td>{{ orden.Total }}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="card-footer">
+                  <button class="btn btn-danger btn-sm" (click)="eliminarOrden(orden.ID)">Eliminar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

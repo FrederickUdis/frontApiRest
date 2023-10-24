@@ -1,0 +1,41 @@
+
+<div *ngIf="mostrarFormulario">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="consumidorForm" (ngSubmit)="crearConsumidor()">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" formControlName="Nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="Email">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<!-- Lista de consumidores -->
+<div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let consumidor of consumidores">
+        <div class="card h-100 border-primary">
+            <div class="card-header bg-primary text-white">
+                {{ consumidor.Nombre }}
+            </div>
+            <div class="card-body">
+                <p>Email: {{ consumidor.Email }}</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-warning btn-sm mr-2" (click)="editarConsumidor(consumidor.ID)">Editar</button>
+                <button class="btn btn-danger btn-sm" (click)="eliminarConsumidor(consumidor.ID)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mb-4 text-center">
+    <button class="btn btn-success" (click)="agregarConsumidor()">Crear consumidor</button>
+</div>

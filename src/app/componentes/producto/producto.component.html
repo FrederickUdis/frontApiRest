@@ -1,0 +1,57 @@
+<div class="container mt-5">
+    <!-- Botón para crear un nuevo producto -->
+    <div class="mb-4">
+        <button class="btn btn-success" (click)="agregarProducto()">Crear producto</button>
+    </div>
+
+    <!-- Formulario para agregar un producto -->
+    <div *ngIf="mostrarFormulario">
+        <form [formGroup]="productoForm" (ngSubmit)="crearProducto()">
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input type="text" class="form-control" id="descripcion" formControlName="Descripcion">
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" id="precio" formControlName="Precio">
+            </div>
+            <div class="form-group">
+                <label for="stock">Stock</label>
+                <input type="number" class="form-control" id="stock" formControlName="Stock">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+        <hr>
+    </div>
+
+
+    <!-- Lista de productos -->
+    <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let producto of productos">
+            <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                    {{ producto.Descripcion }}
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <td><strong>Precio</strong></td>
+                                <td>{{ producto.Precio }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stock</strong></td>
+                                <td>{{ producto.Stock }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-warning btn-sm mr-2" (click)="editarProducto(producto.ID)">Editar</button>
+                    <button class="btn btn-danger btn-sm" (click)="eliminarProducto(producto.ID)">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
